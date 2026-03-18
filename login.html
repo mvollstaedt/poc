@@ -29,8 +29,8 @@
         window.location.replace('index.html');
       } else {
         clerk.mountSignIn(document.getElementById('clerk-sign-in'), {
-          afterSignInUrl: window.location.origin + '/index.html',
-          afterSignUpUrl: window.location.origin + '/index.html',
+          afterSignInUrl: new URL('index.html', window.location.href).href,
+          afterSignUpUrl: new URL('index.html', window.location.href).href,
         });
       }
     };
