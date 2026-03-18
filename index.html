@@ -16,7 +16,7 @@
     script.src = 'https://cdn.jsdelivr.net/npm/@clerk/clerk-js@latest/dist/clerk.browser.js';
     script.onload = async () => {
       const clerk = new window.Clerk(CLERK_KEY);
-      await clerk.load({ isSatellite: true });
+      await clerk.load();
       if (!clerk.user) window.location.replace('login.html');
     };
     document.head.appendChild(script);
