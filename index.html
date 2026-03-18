@@ -10,7 +10,7 @@
 
   <!-- Clerk auth gate -->
   <div id="clerk-sign-in" style="display:none;position:fixed;inset:0;background:#fff;z-index:9999;align-items:center;justify-content:center;"></div>
-  <div id="version-badge" style="position:fixed;bottom:8px;right:8px;background:rgba(0,0,0,0.55);color:#fff;font:11px/1 monospace;padding:4px 8px;border-radius:4px;z-index:10000;">v10</div>
+  <div id="version-badge" style="position:fixed;bottom:8px;right:8px;background:rgba(0,0,0,0.55);color:#fff;font:11px/1 monospace;padding:4px 8px;border-radius:4px;z-index:10000;">v11</div>
   <button id="log-toggle" onclick="(function(){var p=document.getElementById('log-panel');p.style.display=p.style.display==='none'?'block':'none';})()" style="position:fixed;bottom:8px;left:8px;background:rgba(0,0,0,0.55);color:#fff;font:11px/1 monospace;padding:4px 8px;border-radius:4px;z-index:10000;border:none;cursor:pointer;">log</button>
   <div id="log-panel" style="display:none;position:fixed;bottom:32px;left:0;right:0;max-height:40vh;overflow-y:auto;background:rgba(0,0,0,0.85);color:#0f0;font:11px/1.5 monospace;padding:8px;z-index:10000;white-space:pre-wrap;word-break:break-all;"></div>
   <script>
@@ -40,7 +40,7 @@
 
     const CLERK_KEY = 'pk_test_c2VsZWN0LWdvcGhlci04MS5jbGVyay5hY2NvdW50cy5kZXYk';
     const script = document.createElement('script');
-    script.src = 'https://select-gopher-81.clerk.accounts.dev/npm/@clerk/clerk-js@6/dist/clerk.browser.js';
+    script.src = 'https://select-gopher-81.clerk.accounts.dev/npm/@clerk/clerk-js@5/dist/clerk.browser.js';
     script.crossOrigin = 'anonymous';
     script.onerror = (e) => {
       console.error('[clerk] script load failed', e);
