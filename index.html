@@ -9,6 +9,7 @@
 <body>
 
   <!-- Clerk auth gate -->
+  <div id="clerk-sign-in" style="display:none;position:fixed;inset:0;background:#fff;z-index:9999;align-items:center;justify-content:center;"></div>
   <script>
     // Hide page until auth is confirmed — prevents content flash
     document.documentElement.style.visibility = 'hidden';
@@ -24,7 +25,10 @@
         if (clerk.user) {
           document.documentElement.style.visibility = '';
         } else {
-          await clerk.redirectToSignIn({ redirectUrl: window.location.href });
+          const signInDiv = document.getElementById('clerk-sign-in');
+          signInDiv.style.display = 'flex';
+          document.documentElement.style.visibility = '';
+          clerk.mountSignIn(signInDiv, { afterSignInUrl: window.location.href });
         }
       } catch (err) {
         console.error('Clerk error:', err);
