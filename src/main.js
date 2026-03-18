@@ -9,6 +9,9 @@ const CLERK_KEY = 'pk_test_c2VsZWN0LWdvcGhlci04MS5jbGVyay5hY2NvdW50cy5kZXYk';
     console.log('[clerk] loaded, user:', clerk.user);
 
     if (clerk.user) {
+      const logoutBtn = document.getElementById('logout-btn');
+      logoutBtn.style.display = '';
+      logoutBtn.addEventListener('click', () => clerk.signOut());
       document.documentElement.style.visibility = '';
     } else {
       const signInDiv = document.getElementById('clerk-sign-in');
