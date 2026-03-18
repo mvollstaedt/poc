@@ -8,6 +8,20 @@
 </head>
 <body>
 
+  <!-- Clerk auth gate: redirects to login.html if not signed in -->
+  <!-- Replace CLERK_PUBLISHABLE_KEY with your key from https://dashboard.clerk.com -->
+  <script>
+    const CLERK_KEY = 'REPLACE_WITH_YOUR_CLERK_PUBLISHABLE_KEY';
+    const script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/@clerk/clerk-js@latest/dist/clerk.browser.js';
+    script.onload = async () => {
+      const clerk = new window.Clerk(CLERK_KEY);
+      await clerk.load();
+      if (!clerk.user) window.location.replace('login.html');
+    };
+    document.head.appendChild(script);
+  </script>
+
   <header class="hero">
     <div class="hero-content">
       <h1>Welcome to the POC</h1>

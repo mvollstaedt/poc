@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign In – POC</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="login-page">
+
+  <div class="login-container">
+    <div class="login-header">
+      <h1>POC</h1>
+      <p>Sign in to access the app</p>
+    </div>
+    <!-- Clerk mounts the sign-in form here -->
+    <div id="clerk-sign-in"></div>
+  </div>
+
+  <!-- Replace CLERK_PUBLISHABLE_KEY with your key from https://dashboard.clerk.com -->
+  <script>
+    const CLERK_KEY = 'REPLACE_WITH_YOUR_CLERK_PUBLISHABLE_KEY';
+    const script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/@clerk/clerk-js@latest/dist/clerk.browser.js';
+    script.onload = async () => {
+      const clerk = new window.Clerk(CLERK_KEY);
+      await clerk.load();
+      if (clerk.user) {
+        window.location.replace('index.html');
+      } else {
+        clerk.mountSignIn(document.getElementById('clerk-sign-in'), {
+          afterSignInUrl: window.location.origin + '/index.html',
+          afterSignUpUrl: window.location.origin + '/index.html',
+        });
+      }
+    };
+    document.head.appendChild(script);
+  </script>
+
+</body>
+</html>
