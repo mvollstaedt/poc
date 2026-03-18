@@ -8,16 +8,36 @@
 </head>
 <body>
 
-  <!-- Clerk auth gate: redirects to login.html if not signed in -->
-  <!-- Replace CLERK_PUBLISHABLE_KEY with your key from https://dashboard.clerk.com -->
+  <!-- Clerk auth gate -->
   <script>
+    // Hide page until auth is confirmed — prevents content flash
+    document.documentElement.style.visibility = 'hidden';
+
     const CLERK_KEY = 'pk_test_c2VsZWN0LWdvcGhlci04MS5jbGVyay5hY2NvdW50cy5kZXYk';
+    const CLERK_SIGN_IN_URL = 'https://accounts.select-gopher-81.clerk.accounts.dev/sign-in';
+
+    function redirectToSignIn() {
+      const url = new URL(CLERK_SIGN_IN_URL);
+      url.searchParams.set('redirect_url', window.location.href);
+      window.location.replace(url.href);
+    }
+
     const script = document.createElement('script');
     script.src = 'https://cdn.jsdelivr.net/npm/@clerk/clerk-js@latest/dist/clerk.browser.js';
+    script.onerror = redirectToSignIn;
     script.onload = async () => {
-      const clerk = new window.Clerk(CLERK_KEY);
-      await clerk.load({ isSatellite: true });
-      if (!clerk.user) clerk.redirectToSignIn({ redirectUrl: window.location.href });
+      try {
+        const clerk = new window.Clerk(CLERK_KEY);
+        await clerk.load({ isSatellite: true });
+        if (clerk.user) {
+          document.documentElement.style.visibility = '';
+        } else {
+          redirectToSignIn();
+        }
+      } catch (err) {
+        console.error('Clerk error:', err);
+        redirectToSignIn();
+      }
     };
     document.head.appendChild(script);
   </script>
