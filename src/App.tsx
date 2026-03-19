@@ -71,12 +71,18 @@ export default function App() {
         <p>&copy; 2026 POC · Deployed on Render</p>
       </footer>
 
-      <div style={{
-        position: 'fixed', bottom: 8, right: 8, zIndex: 10000,
-        background: 'rgba(0,0,0,0.55)', color: '#fff',
-        font: '11px/1 monospace', padding: '4px 8px', borderRadius: 4,
-      }}>
-        v14
+      <div
+        title={__BUILD_TIME__}
+        style={{
+          position: 'fixed', bottom: 8, right: 8, zIndex: 10000,
+          background: 'rgba(0,0,0,0.55)', color: '#fff',
+          font: '11px/1 monospace', padding: '4px 8px', borderRadius: 4,
+        }}
+      >
+        built {new Date(__BUILD_TIME__).toLocaleString('en-GB', {
+          day: '2-digit', month: 'short', year: 'numeric',
+          hour: '2-digit', minute: '2-digit', timeZone: 'UTC', timeZoneName: 'short',
+        })}
       </div>
     </>
   );
