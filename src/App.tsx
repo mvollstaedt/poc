@@ -19,7 +19,7 @@ export default function App() {
         minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center',
         background: 'linear-gradient(135deg, #0f0f13 0%, #1a1030 50%, #0f0f13 100%)',
       }}>
-        <SignIn />
+        <SignIn forceRedirectUrl="/poc" />
       </div>
     );
   }
