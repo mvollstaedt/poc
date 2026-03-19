@@ -4,76 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>POC – Public Testing</title>
-  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
-  <!-- Clerk auth gate -->
-  <div id="clerk-sign-in" style="display:none;position:fixed;inset:0;background:#fff;z-index:9999;align-items:center;justify-content:center;"></div>
-  <div id="version-badge" style="position:fixed;bottom:8px;right:8px;background:rgba(0,0,0,0.55);color:#fff;font:11px/1 monospace;padding:4px 8px;border-radius:4px;z-index:10000;">v12</div>
-  <button id="logout-btn" style="display:none;position:fixed;top:12px;right:12px;background:rgba(0,0,0,0.65);color:#fff;font:13px/1 sans-serif;padding:6px 14px;border-radius:6px;z-index:10000;border:none;cursor:pointer;">Logout</button>
-  <button id="log-toggle" onclick="(function(){var p=document.getElementById('log-panel');p.style.display=p.style.display==='none'?'block':'none';})()" style="position:fixed;bottom:8px;left:8px;background:rgba(0,0,0,0.55);color:#fff;font:11px/1 monospace;padding:4px 8px;border-radius:4px;z-index:10000;border:none;cursor:pointer;">log</button>
-  <div id="log-panel" style="display:none;position:fixed;bottom:32px;left:0;right:0;max-height:40vh;overflow-y:auto;background:rgba(0,0,0,0.85);color:#0f0;font:11px/1.5 monospace;padding:8px;z-index:10000;white-space:pre-wrap;word-break:break-all;"></div>
   <script>
-    (function() {
-      const panel = document.getElementById('log-panel');
-      function append(level, args) {
-        const line = document.createElement('div');
-        line.style.borderBottom = '1px solid #222';
-        line.style.paddingBottom = '2px';
-        line.style.color = level === 'error' ? '#f66' : level === 'warn' ? '#fa0' : '#0f0';
-        line.textContent = '[' + level + '] ' + Array.from(args).map(a => {
-          try { return typeof a === 'object' ? JSON.stringify(a) : String(a); } catch(e) { return String(a); }
-        }).join(' ');
-        panel.appendChild(line);
-        panel.scrollTop = panel.scrollHeight;
-      }
-      ['log','warn','error'].forEach(lvl => {
-        const orig = console[lvl].bind(console);
-        console[lvl] = function(...args) { orig(...args); append(lvl, args); };
-      });
-      window.addEventListener('error', e => append('error', [e.message, e.filename + ':' + e.lineno]));
-      window.addEventListener('unhandledrejection', e => append('error', ['unhandledrejection', e.reason]));
-    })();
-
     // Hide page until auth is confirmed — prevents content flash
     document.documentElement.style.visibility = 'hidden';
   </script>
-
-  <script type="module" src="/src/main.js"></script>
-
-  <header class="hero">
-    <div class="hero-content">
-      <h1>Welcome to the POC</h1>
-      <p>A proof-of-concept deployment — live on the web, ready to test from any device.</p>
-      <a href="#features" class="btn">See Features</a>
-    </div>
-  </header>
-
-  <section id="features" class="features">
-    <h2>What's included</h2>
-    <div class="grid">
-      <div class="card">
-        <div class="icon">⚡</div>
-        <h3>Fast</h3>
-        <p>Served from a global CDN with no server-side rendering overhead — loads instantly on any network.</p>
-      </div>
-      <div class="card">
-        <div class="icon">🔒</div>
-        <h3>Secure</h3>
-        <p>HTTPS by default with automatic TLS certificates managed by Render, so your connection is always encrypted.</p>
-      </div>
-      <div class="card">
-        <div class="icon">📱</div>
-        <h3>Mobile-ready</h3>
-        <p>Fully responsive layout that adapts to any screen size — test it right now from your phone.</p>
-      </div>
-    </div>
-  </section>
-
-  <footer class="footer">
-    <p>&copy; 2026 POC · Deployed on Render</p>
-  </footer>
-
+  <div id="root"></div>
+  <script type="module" src="/src/main.tsx"></script>
 </body>
 </html>
