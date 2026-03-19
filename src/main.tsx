@@ -4,7 +4,8 @@ import { ClerkProvider } from '@clerk/react';
 import App from './App';
 import './style.css';
 
-const PUBLISHABLE_KEY = 'pk_test_c2VsZWN0LWdvcGhlci04MS5jbGVyay5hY2NvdW50cy5kZXYk';
+const PUBLISHABLE_KEY =
+  'pk_test_c2VsZWN0LWdvcGhlci04MS5jbGVyay5hY2NvdW50cy5kZXYk';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
