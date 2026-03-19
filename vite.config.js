@@ -2,6 +2,9 @@ import { defineConfig } from 'vite';
 
 export default defineConfig({
   base: process.env.GITHUB_PAGES === 'true' ? '/poc/' : '/',
+  resolve: {
+    conditions: ['browser'],
+  },
   optimizeDeps: {
     exclude: ['@clerk/clerk-js'],
   },
