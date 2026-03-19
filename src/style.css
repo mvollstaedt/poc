@@ -11,12 +11,21 @@
 }
 
 /* ── Reset ── */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+}
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-family:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   background: var(--bg);
   color: var(--text);
   line-height: 1.6;
@@ -36,14 +45,21 @@ body {
 }
 
 .hero::before {
-  content: "";
+  content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at 50% 40%, rgba(108, 99, 255, 0.18) 0%, transparent 70%);
+  background: radial-gradient(
+    ellipse at 50% 40%,
+    rgba(108, 99, 255, 0.18) 0%,
+    transparent 70%
+  );
   pointer-events: none;
 }
 
-.hero-content { position: relative; max-width: 640px; }
+.hero-content {
+  position: relative;
+  max-width: 640px;
+}
 
 .hero h1 {
   font-size: clamp(2rem, 6vw, 3.5rem);
@@ -71,10 +87,15 @@ body {
   border-radius: 50px;
   font-weight: 600;
   font-size: 1rem;
-  transition: background 0.2s, transform 0.2s;
+  transition:
+    background 0.2s,
+    transform 0.2s;
 }
 
-.btn:hover { background: var(--accent-light); transform: translateY(-2px); }
+.btn:hover {
+  background: var(--accent-light);
+  transform: translateY(-2px);
+}
 
 /* ── Features ── */
 .features {
@@ -97,7 +118,9 @@ body {
 }
 
 @media (min-width: 640px) {
-  .grid { grid-template-columns: repeat(3, 1fr); }
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 .card {
@@ -106,7 +129,9 @@ body {
   border-radius: var(--radius);
   padding: 2rem 1.5rem;
   text-align: center;
-  transition: transform 0.2s, border-color 0.2s;
+  transition:
+    transform 0.2s,
+    border-color 0.2s;
 }
 
 .card:hover {
@@ -114,7 +139,10 @@ body {
   border-color: rgba(108, 99, 255, 0.4);
 }
 
-.icon { font-size: 2rem; margin-bottom: 1rem; }
+.icon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
 
 .card h3 {
   font-size: 1.15rem;
@@ -122,7 +150,10 @@ body {
   margin-bottom: 0.6rem;
 }
 
-.card p { color: var(--muted); font-size: 0.95rem; }
+.card p {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
 
 /* ── Login page ── */
 .login-page {
@@ -134,29 +165,32 @@ body {
   padding: 2rem;
 }
 
-.login-container {
-  width: 100%;
-  max-width: 440px;
+/* ── Logout button ── */
+.logout-button {
+  position: fixed;
+  top: 12px;
+  right: 12px;
+  z-index: 10000;
+  background: rgba(0, 0, 0, 0.65);
+  color: #fff;
+  font: 13px/1 sans-serif;
+  padding: 6px 14px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
 }
 
-.login-header {
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
-.login-header h1 {
-  font-size: 1.8rem;
-  font-weight: 700;
-  background: linear-gradient(135deg, #fff 0%, var(--accent-light) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin-bottom: 0.4rem;
-}
-
-.login-header p {
-  color: var(--muted);
-  font-size: 0.95rem;
+/* ── Build badge ── */
+.build-badge {
+  position: fixed;
+  bottom: 8px;
+  right: 8px;
+  z-index: 10000;
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  font: 11px/1 monospace;
+  padding: 4px 8px;
+  border-radius: 4px;
 }
 
 /* ── Footer ── */
