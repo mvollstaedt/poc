@@ -1,8 +1,8 @@
-// Clerk is loaded via CDN script tag in index.html (window.Clerk is the pre-initialized instance)
-const clerk = window.Clerk;
-
-(async () => {
+// Clerk is loaded via async CDN script tag in index.html.
+// window.addEventListener("load") guarantees the async script has finished before we proceed.
+window.addEventListener('load', async function () {
   try {
+    const clerk = window.Clerk;
     await clerk.load();
     console.log('[clerk] loaded, user:', clerk.user);
 
@@ -25,4 +25,4 @@ const clerk = window.Clerk;
     console.error('[clerk] error toString:', String(err));
     document.documentElement.style.visibility = '';
   }
-})();
+});
