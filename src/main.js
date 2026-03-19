@@ -1,10 +1,8 @@
-import { Clerk } from '@clerk/clerk-js';
-
-const CLERK_KEY = 'pk_test_c2VsZWN0LWdvcGhlci04MS5jbGVyay5hY2NvdW50cy5kZXYk';
+// Clerk is loaded via CDN script tag in index.html (window.Clerk is the pre-initialized instance)
+const clerk = window.Clerk;
 
 (async () => {
   try {
-    const clerk = new Clerk(CLERK_KEY);
     await clerk.load();
     console.log('[clerk] loaded, user:', clerk.user);
 
