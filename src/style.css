@@ -197,7 +197,65 @@ body {
 .footer {
   text-align: center;
   padding: 2rem;
+  padding-bottom: 4rem;
   color: var(--muted);
   font-size: 0.875rem;
   border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* ── Terminal Panel ── */
+.terminal-panel {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9000;
+  display: flex;
+  flex-direction: column;
+}
+
+.terminal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  background: var(--surface);
+  border-top: 1px solid rgba(108, 99, 255, 0.25);
+  cursor: pointer;
+  user-select: none;
+}
+
+.terminal-header span {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 0.85rem;
+  color: var(--muted);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.terminal-header button {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 0.3rem 0.9rem;
+  border-radius: 6px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.terminal-header button:hover {
+  background: var(--accent-light);
+}
+
+.terminal-container {
+  height: 320px;
+  background: var(--bg);
+  padding: 0.5rem;
+  border-top: 1px solid rgba(108, 99, 255, 0.15);
+}
+
+.terminal-container .xterm {
+  height: 100%;
 }

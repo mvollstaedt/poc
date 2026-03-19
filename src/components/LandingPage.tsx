@@ -1,5 +1,6 @@
 import LogoutButton from './LogoutButton';
 import BuildBadge from './BuildBadge';
+import TerminalPanel from './TerminalPanel';
 
 export default function LandingPage() {
   return (
@@ -53,6 +54,7 @@ export default function LandingPage() {
         <p>&copy; 2026 POC · Deployed on Render</p>
       </footer>
 
+      <TerminalPanel />
       <BuildBadge />
     </>
   );

@@ -3,6 +3,7 @@ import { vi } from 'vitest';
 export const useAuth = vi.fn().mockReturnValue({
   isLoaded: true,
   isSignedIn: true,
+  getToken: vi.fn().mockResolvedValue('mock-token'),
 });
 
 export const useClerk = vi.fn().mockReturnValue({
